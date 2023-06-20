@@ -1,5 +1,5 @@
 'use strict';
-import {Model} from 'sequelize';
+import {Model, Optional} from 'sequelize';
 
 type InfrastructureAttributes = {
   id: string,
@@ -8,6 +8,9 @@ type InfrastructureAttributes = {
   description: Record<string, any>,
   // other attributes...
 };
+
+export interface InfrastructureInput extends Optional<InfrastructureAttributes, 'id'> {}
+export interface InfrastructureOutput extends Required<InfrastructureAttributes> {}
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class Infrastructure extends Model<InfrastructureAttributes>

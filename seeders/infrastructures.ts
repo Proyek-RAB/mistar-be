@@ -74,4 +74,233 @@ export const infrastructures = [
             contact_person: "087848484848"
         }
     },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    {
+        id: uuidv4(),
+        type_id: 3,
+        type_name: "titik_persampahan",
+        name: "titik pembuangan sampah rw 2",
+        description: {
+            ownership: "bersama",
+            stakeholder: "pemerintah",
+            waste_type: "tps",
+            processing_type: "individual_langsung",
+            service_scope : {
+                capacity: 3,
+                kk_count : 4,
+                people_count: 20
+            },
+            monthly_service_bill: 10000,
+            contact_person: "087848484848"
+        }
+    },
+    
 ]
