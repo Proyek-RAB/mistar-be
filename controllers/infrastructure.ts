@@ -23,7 +23,7 @@ export const getAllInfrastructure = async (req: Request, res: Response) => {
             limit: size,
             offset: page*size,
         })
-        console.log(size,size*page)
+        // console.log(size,size*page)
 
         const {total_items, total_page, current_page,items } = getPagingData(infrastructure, page, size)
         
@@ -46,8 +46,8 @@ export const getInfrastructureByID = async (req: Request, res: Response) => {
                 type_id: req.params.id
             }
         })
-        console.log(infrastructure[0])
-        res.send(infrastructures[0])
+        // console.log(infrastructure[0])
+        res.send(infrastructure)
     } catch (error) {
     }
 }

@@ -10,7 +10,8 @@ type InfrastructureTypeAttributes = {
 };
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class InfrastructureType extends Model {
+  class InfrastructureType extends Model 
+  implements InfrastructureTypeAttributes {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -34,13 +35,24 @@ module.exports = (sequelize: any, DataTypes: any) => {
       primaryKey: true,
       autoIncrement: true, 
     },
-    name: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    icon_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    sub_type: {
+      type: DataTypes.JSON,
+      allowNull: false,
     }
+
   }, {
     sequelize,
     modelName: 'InfrastructureType',
+    freezeTableName: true,
+    // timestamps: false,
   });
   return InfrastructureType;
 };

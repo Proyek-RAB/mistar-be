@@ -6,21 +6,23 @@ import {infrastructures} from './seeders/infrastructures';
 import {infrastructuretypes} from './seeders/infrastructurestypes';
 import routes from './routes';
 import { paginatedResults } from './controllers/pagination';
+import { join } from 'path';
 
-// const createInfrastructures = () => {
-//   infrastructures.map(infra => {
-//     db.Infrastructure.create(infra);
-//   })
-// }
 
 // const createInfrastructureType = () => {
 //   infrastructuretypes.map(infra => {
 //     db.InfrastructureType.create(infra);
 //   })
 // }
-
 // createInfrastructureType();
+
+// const createInfrastructures = () => {
+//   infrastructures.map(infra => {
+//     db.Infrastructure.create(infra);
+//   })
+// }
 // createInfrastructures();
+
 
 const user = [
   {id: 1, name : 'User1'},
@@ -44,6 +46,8 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
+// Serve static files
+app.use('/static' ,express.static(join(__dirname, 'public')));
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
@@ -54,6 +58,5 @@ db.sequelize.sync().then(() => {
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server is Running');
 });
-
 
 app.use('/api/v1', routes);

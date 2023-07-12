@@ -5,6 +5,8 @@ type InfrastructureAttributes = {
   id: string,
   type_id: number,
   type_name: string,
+  sub_type_name:string,
+  sub_type_id:string,
   description: Record<string, any>,
   // other attributes...
 };
@@ -23,6 +25,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: string;
     type_id!: number;
     type_name!: string;
+    sub_type_name!: string;
+    sub_type_id!: string;
     description!: Record<string, any>;
 
     static associate(models: any) {
@@ -44,11 +48,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       primaryKey: true,
       references:{
-        model: "InfrastructureTypes",
+        model: "InfrastructureType",
         key: 'id'
       }
     },
     type_name: {
+      type: DataTypes.STRING, 
+      allowNull: false,
+    },
+    sub_type_name: {
+      type: DataTypes.STRING, 
+      allowNull: false,
+    },
+    sub_type_id: {
       type: DataTypes.STRING, 
       allowNull: false,
     },
@@ -59,6 +71,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }, {
     sequelize,
     modelName: 'Infrastructure',
+    freezeTableName: true,
+    // timestamps: false,
   });
   return Infrastructure;
 };
