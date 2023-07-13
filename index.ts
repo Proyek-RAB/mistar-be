@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import db from './models';
 import {users} from './seeders/users';
 import {infrastructures} from './seeders/infrastructures';
-import {infrastructuretypes} from './seeders/infrastructurestypes';
+import {infrastructuretypes } from './seeders/infrastructurestypes';
+import { infrastructuresubtype } from './seeders/infrastructuresubtype';
 import routes from './routes';
 import { paginatedResults } from './controllers/pagination';
 import { join } from 'path';
@@ -15,6 +16,13 @@ import { join } from 'path';
 //   })
 // }
 // createInfrastructureType();
+
+// const createInfrastructureSubType = () => {
+//   infrastructuresubtype.map(infra => {
+//     db.InfrastructureSubType.create(infra);
+//   })
+// }
+// createInfrastructureSubType();
 
 // const createInfrastructures = () => {
 //   infrastructures.map(infra => {
@@ -46,8 +54,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
-// Serve static files
-app.use('/static' ,express.static(join(__dirname, 'public')));
+
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
@@ -60,3 +67,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/v1', routes);
+// Serve static files
+app.use('/api/v1/static' ,express.static(join(__dirname, 'public')));

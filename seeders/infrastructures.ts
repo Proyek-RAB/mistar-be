@@ -3,12 +3,9 @@ import {v4 as uuidv4} from 'uuid';
 export const infrastructures = [
     {
         id: uuidv4(),
-        type_id: 1, 
-        type_name: "Titik",
-        sub_type_name:"Air Limbah",
         sub_type_id:2,
         name: "air di ciwaruga",
-        description: {
+        details: {
             ownership: "bersama",
             stakeholder: "pemerintah",
             toilet_type: "pelengsengan",
@@ -24,12 +21,9 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        type_id: 1,
-        type_name: "Titik",
-        sub_type_name:"Air Bersih",
         sub_type_id:1,
         name: "air di ciwaruga",
-        description: {
+        details: {
             ownership: "sendiri",
             source:"sumur_air_tanah",
             service_scope : {
@@ -43,12 +37,9 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        type_id:1,
-        type_name: "Titik",
-        sub_type_name:"Air Bersih",
         sub_type_id:1,
         name: "air di ciwaruga",
-        description: {
+        details: {
             ownership: "bersama",
             stakeholder: "pemerintah",
             source:"pdam",
@@ -63,12 +54,9 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        type_id: 1,
-        type_name: "Titik",
-        sub_type_name:"Titik Persampahan",
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
-        description: {
+        details: {
             ownership: "bersama",
             stakeholder: "pemerintah",
             waste_type: "tps",
@@ -84,12 +72,9 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        type_id: 1,
-        type_name: "Titik",
-        sub_type_name:"Titik Persampahan",
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
-        description: {
+        details: {
             ownership: "bersama",
             stakeholder: "pemerintah",
             waste_type: "tps",
@@ -105,12 +90,9 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        type_id: 1,
-        type_name: "Titik",
-        sub_type_name:"Titik Persampahan",
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
-        description: {
+        details: {
             ownership: "bersama",
             stakeholder: "pemerintah",
             waste_type: "tps",

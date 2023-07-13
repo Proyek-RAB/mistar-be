@@ -3,11 +3,9 @@ import {Model, Optional} from 'sequelize';
 
 type InfrastructureAttributes = {
   id: string,
-  type_id: number,
-  type_name: string,
-  sub_type_name:string,
-  sub_type_id:string,
-  description: Record<string, any>,
+  sub_type_id:number,
+  name:string,
+  details: Record<string, any>,
   // other attributes...
 };
 
@@ -23,18 +21,18 @@ module.exports = (sequelize: any, DataTypes: any) => {
      * The `models/index` file will call this method automatically.
      */
     id!: string;
-    type_id!: number;
-    type_name!: string;
-    sub_type_name!: string;
-    sub_type_id!: string;
-    description!: Record<string, any>;
+    sub_type_id!: number;
+    name!:string;
+    details!: Record<string, any>;
 
     static associate(models: any) {
       // define association here
-      models.InfrastructureType.hasMany(Infrastructure, {
-        foreignKey: "type_id"
+      models.InfrastructureSubType.hasMany(Infrastructure, {
+        foreignKey: "sub_type_id"
       });
-      Infrastructure.belongsTo(models.InfrastructureType);
+      Infrastructure.belongsTo(models.InfrastructureSubType, {
+        foreignKey: "sub_type_id"
+      });
     }
   }
   Infrastructure.init({
@@ -43,28 +41,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       primaryKey: true
     },
-    type_id: {
+    sub_type_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       references:{
-        model: "InfrastructureType",
+        model: "InfrastructureSubType",
         key: 'id'
       }
     },
-    type_name: {
-      type: DataTypes.STRING, 
-      allowNull: false,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
-    sub_type_name: {
-      type: DataTypes.STRING, 
-      allowNull: false,
-    },
-    sub_type_id: {
-      type: DataTypes.STRING, 
-      allowNull: false,
-    },
-    description: {
+    details: {
       type: DataTypes.JSON,
       allowNull: true,
     }
@@ -72,7 +61,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     sequelize,
     modelName: 'Infrastructure',
     freezeTableName: true,
-    // timestamps: false,
+    timestamps: false,
   });
   return Infrastructure;
 };

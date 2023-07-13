@@ -6,6 +6,7 @@ import {
 type InfrastructureTypeAttributes = {
   id: number,
   name: string,
+  icon_url:string,
   // other attributes...
 };
 
@@ -19,13 +20,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
      */
     id!: number;
     name!:string;
-
+    icon_url!:string;
     static associate(models: any) {
       // define association here
-      models.InfrastructureType.hasMany(models.Infrastructure, {
-        foreignKey: "type_id"
-      });
-      models.Infrastructure.belongsTo(models.InfrastructureType);
+      // models.InfrastructureType.hasMany(models.infrastructuresubtype, {
+      //   foreignKey: "type_id"
+      // });
     }
   }
   InfrastructureType.init({
@@ -35,24 +35,19 @@ module.exports = (sequelize: any, DataTypes: any) => {
       primaryKey: true,
       autoIncrement: true, 
     },
-    type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     icon_url: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    sub_type: {
-      type: DataTypes.JSON,
-      allowNull: false,
     }
-
   }, {
     sequelize,
     modelName: 'InfrastructureType',
     freezeTableName: true,
-    // timestamps: false,
+    timestamps: false,
   });
   return InfrastructureType;
 };
