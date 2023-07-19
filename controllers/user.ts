@@ -49,7 +49,7 @@ export const login = async (req: Request ,res: Response) => {
   if (match) {
     const jwtToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email },  process.env.JWT_SECRET || "");
 
-    return res.json({ message: "Welcome back", name: userWithEmail.nama, token: jwtToken, email: userWithEmail.email, roles: userWithEmail.roles });
+    return res.json({ message: "Welcome back", name: userWithEmail.name, token: jwtToken, email: userWithEmail.email, roles: userWithEmail.roles});
   } else {
     // Passwords do not match
     return res.json({ message: "Password does not match!" });

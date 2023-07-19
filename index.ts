@@ -39,7 +39,7 @@ import { bypassAuthMiddleware } from './auth/authMiddleware';
 //   users.map(user => {
 //     db.User.create(user);
 //   })
-// }
+// }yg 
 // createUser();
 
 const user = [
