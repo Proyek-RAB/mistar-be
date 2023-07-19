@@ -49,5 +49,16 @@ export const getInfrastructureByID = async (req: Request, res: Response) => {
         // console.log(infrastructure[0])
         res.send(infrastructure)
     } catch (error) {
+        res.send(error)
     }
+}
+
+//create new infrastructure.
+export const createInfrastructures = async (req: Request, res: Response) => {
+    try {
+        await db.Infrastructure.create(req.body);
+        res.status(201).json({ msg: "Infrastructure Created" });
+      } catch (err) {
+        console.log(err);
+      }
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 import { UUIDV4 } from "sequelize";
+import bcrypt from "bcrypt";
 
 import {
   Model
@@ -10,6 +11,7 @@ type UserAttributes = {
   id: string,
   name: string,
   email: string,
+  password : string,
   // other attributes...
 };
 
@@ -24,6 +26,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: string;
     name!: string;
     email!: string;
+    password!:string;
     static associate(models: any) {
       // define association here
     }
@@ -44,9 +47,20 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
+    hooks: {
+      beforeCreate:async (user:any) => {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+      }
+    },
     sequelize,
     modelName: 'User',
+    freezeTableName: true,
   });
   return User;
 };

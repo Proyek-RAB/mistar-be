@@ -8,6 +8,10 @@ import { infrastructuresubtype } from './seeders/infrastructuresubtype';
 import routes from './routes';
 import { paginatedResults } from './controllers/pagination';
 import { join } from 'path';
+import bodyParser from 'body-parser';
+// const myPassport = require("./auth/passport.js").myPassport;
+import  myPassport from './auth/passport';
+import { bypassAuthMiddleware } from './auth/authMiddleware';
 
 
 // const createInfrastructureType = () => {
@@ -31,6 +35,12 @@ import { join } from 'path';
 // }
 // createInfrastructures();
 
+// const createUser = () => {
+//   users.map(user => {
+//     db.User.create(user);
+//   })
+// }
+// createUser();
 
 const user = [
   {id: 1, name : 'User1'},
@@ -54,13 +64,16 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
-
-
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
   })
 })
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(bypassAuthMiddleware)
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server is Running');

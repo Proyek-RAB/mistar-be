@@ -5,7 +5,7 @@ export const users = [
         id: uuidv4(),
         name: 'akram albari',
         email: 'akram@gmail.com',
-        passworaird: 'abc123'
+        password: 'abc123'
     },
     {
         id: uuidv4(),
