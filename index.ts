@@ -73,7 +73,7 @@ db.sequelize.sync().then(() => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(bypassAuthMiddleware)
+// app.use(bypassAuthMiddleware)
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server is Running');
