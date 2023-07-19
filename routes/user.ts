@@ -5,7 +5,7 @@ const UserRouter = Router();
 
 UserRouter.get('/data', getUser)
 UserRouter.get('/data/:id', getUserByID)
-UserRouter.post('/data', createUser)
+UserRouter.post('/register', createUser)
 
 UserRouter.post('/login', login)
 
