@@ -11,7 +11,7 @@ import { join } from 'path';
 import bodyParser from 'body-parser';
 // const myPassport = require("./auth/passport.js").myPassport;
 import  myPassport from './auth/passport';
-import { bypassAuthMiddleware } from './auth/authMiddleware';
+import { bypassAuthMiddleware, setUserId } from './auth/authMiddleware';
 
 
 // const createInfrastructureType = () => {
@@ -73,7 +73,8 @@ db.sequelize.sync().then(() => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
-// app.use(bypassAuthMiddleware)
+// app.use(setUserId) 
+app.use(bypassAuthMiddleware)
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server is Running');

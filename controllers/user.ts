@@ -1,10 +1,11 @@
 // const user = require("../models/user.cjs");
 import { Request, Response } from 'express';
-import jwt from "jsonwebtoken";
+import jwt , {Secret, JwtPayload}from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import db from '../models';
 // const { models: {user}} = require('../models/index.ts')
 // import { User } from "../models/index";
+const secretKey: Secret = process.env.JWT_SECRET || "";
 
 export const register = async (req: Request ,res: Response) => {
   const { nama, roles, email, password } = req.body;
@@ -14,10 +15,15 @@ export const register = async (req: Request ,res: Response) => {
   });
 
   if (alreadyExistUser) {
-    return res.json({ message: "User with email already exist" });
+    return res.json({ 
+      success: true,
+      message: "User with email already exist",
+      data:{},
+    });
   }
 
   const newUser = new db.User({ nama, roles, email, password });
+
   const savedUser = await newUser.save().catch((err: any) => {
     console.log("Error :", err);
     res.json({ error: " Cannot register user at the moment" });
@@ -39,7 +45,11 @@ export const login = async (req: Request ,res: Response) => {
   });
 
   if (!userWithEmail) {
-    return res.json({ message: "Email or Password does not match!" });
+    return res.json({ 
+      success: true, 
+      message: "Email or Password does not match!",
+      data: {}
+    });
   }
   // console.log(password);
   // console.log(user.password);
@@ -59,6 +69,11 @@ export const login = async (req: Request ,res: Response) => {
   //   return res.json({ message: "Email or Password does not match!" });
   // }
 };
+
+export const logout = async (req: Request, res: Response) => {
+
+}
+
 
 export const getUser = async (req: Request ,res: Response) => {
   try {
@@ -131,3 +146,16 @@ export const deleteUserByID = async (req: Request ,res: Response) => {
     console.log(err);
   }
 };
+
+export const getDecodedToken = async (req: Request, res: Response) => {
+  const authHeader = req.headers.authorization
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Invalid or missing token' });
+  }
+
+  const token = authHeader.slice(7); // Remove "Bearer " from the token
+  const decodedToken = jwt.verify(token, secretKey) as JwtPayload;
+
+  return decodedToken as JwtPayload;
+}

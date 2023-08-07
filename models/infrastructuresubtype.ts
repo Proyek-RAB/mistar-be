@@ -4,14 +4,6 @@ import {
 } from 'sequelize';
 import { getTokenSourceMapRange } from 'typescript';
 
-type InfrastructureSubTypeAttributes = {
-  id: number,
-  type_id: number,
-  name:string, 
-  icon_url:string
-  // other attributes...
-};
-
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class InfrastructureSubType extends Model {
