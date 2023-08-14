@@ -39,7 +39,7 @@ import { bypassAuthMiddleware, setUserId } from './auth/authMiddleware';
 //   users.map(user => {
 //     db.User.create(user);
 //   })
-// }yg 
+// }
 // createUser();
 
 const user = [
@@ -74,7 +74,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 // app.use(setUserId) 
-app.use(bypassAuthMiddleware)
+app.use([bypassAuthMiddleware])
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server is Running');

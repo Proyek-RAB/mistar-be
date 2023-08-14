@@ -64,7 +64,7 @@ module.exports = (sequelize:any, DataTypes: any) => {
     sequelize,
     modelName: 'infrastructure_edit_history',
     freezeTableName: true, 
-    timestamps:false
+    updatedAt: false, 
   });
   return infrastructure_edit_history;
 };

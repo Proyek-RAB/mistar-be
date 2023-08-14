@@ -3,6 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 export const infrastructures = [
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:2,
         name: "air di ciwaruga",
         details: {
@@ -17,10 +18,12 @@ export const infrastructures = [
                 },
             monthly_service_bill: 10000,
             contact_person: "087848484848"
-        }
+        },
+        status: 'hold'
     },
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:1,
         name: "air di ciwaruga",
         details: {
@@ -37,6 +40,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:1,
         name: "air di ciwaruga",
         details: {
@@ -50,10 +54,12 @@ export const infrastructures = [
             },
             monthly_service_bill: 10000,
             contact_person: "087848484848"
-        }
+        },
+        status: 'hold'
     },
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {
@@ -72,6 +78,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {
@@ -86,10 +93,12 @@ export const infrastructures = [
             },
             monthly_service_bill: 10000,
             contact_person: "087848484848"
-        }
+        },
+        status: 'hold'
     },
     {
         id: uuidv4(),
+        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {
@@ -104,6 +113,7 @@ export const infrastructures = [
             },
             monthly_service_bill: 10000,
             contact_person: "087848484848"
-        }
+        },
+        status: 'hold'
     },
 ]

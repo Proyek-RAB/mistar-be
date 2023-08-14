@@ -1,5 +1,5 @@
 export enum ReqStatus {
-    Approved = 'Approved',
-    Hold = 'Hold',
-    Denied = 'Denied',
+    Approved = 'approved',
+    Hold = 'hold',
+    Denied = 'denied',
   }

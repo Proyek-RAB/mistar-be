@@ -2,13 +2,16 @@
 import {Model, Optional, Sequelize} from 'sequelize';
 import db from '.';
 import {v4 as uuidv4} from 'uuid';
+import { ReqStatus } from '../enums/status.enum';
 
 
 type InfrastructureAttributes = {
   id: string,
   sub_type_id:number,
   name:string,
+  user_id: string, 
   details: Record<string, any>,
+  status: ReqStatus,
   // other attributes...
 };
 
@@ -26,7 +29,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: string;
     sub_type_id!: number;
     name!:string;
+    user_id!: string;
     details!: Record<string, any>;
+    status!: ReqStatus;
 
     static associate(models: any) {
       // define association here
@@ -60,6 +65,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
         key: 'id'
       }
     },
+    user_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: 'id'
+      }
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: true
@@ -67,6 +80,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
     details: {
       type: DataTypes.JSON,
       allowNull: true,
+    },
+    status: {
+      type: DataTypes.ENUM(...Object.values(ReqStatus)),
+      allowNull: false,
+      defaultValue: 'hold'
     }
   }, {
     sequelize,
@@ -79,7 +97,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   Infrastructure.addHook('beforeUpdate', (infrastructure: Infrastructure, options: any) =>{
     try {
       console.log("beforeupdate")
-      const previousData = infrastructure.toJSON();
+      const previousData = infrastructure.toJSON(); // saving infrastructure data to options
       options.previousData = previousData;
     } catch (error) {
       console.error('Error beforeUpdate hook:', error);
@@ -117,17 +135,27 @@ module.exports = (sequelize: any, DataTypes: any) => {
           }
         }
       }
-
-    Infrastructure.addHook("beforeCreate",async (infrastructure:Infrastructure, options: any) => {
-      const infrastructureData = infrastructure.toJSON();
-
-      
-    })
-
-    } catch (error) {
-      
+  } catch (error) {
+    console.error('Error beforeUpdate hook:', error);
     }
   })
+  // Infrastructure.addHook("beforeCreate",async (infrastructure:Infrastructure, options: any) => {
+  // try {
+  //   const infrastructureData = infrastructure.toJSON(); // saving infrastructure data to options
+  //   console.log("beforecreate") 
+  //   options.infrastructureData = infrastructureData  
+  // } catch (error) {
+  //   console.error('Error beforeUpdate hook:', error);
+  // }})
+  
+  // Infrastructure.addHook("afterCreate",async (infrastructure:Infrastructure, options: any) => {
+  //   try {
+  //     const infrastructureData = infrastructure.toJSON(); // saving infrastructure data to options
+  //     console.log("beforecreate") 
+  //     options.infrastructureData = infrastructureData  
+  //   } catch (error) {
+  //     console.error('Error beforeUpdate hook:', error);
+  // }})
 
   return Infrastructure;
 };

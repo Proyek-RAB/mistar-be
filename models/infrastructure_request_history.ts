@@ -7,7 +7,7 @@ import {v4 as uuidv4} from 'uuid';
 type InfrastructureReqHistoryAttr = {
   id: string,
   infrastructure_id: string,
-  user_id:string,
+  admin_id:string,
   details:Record<string, any>,
   // other attributes...
 };
@@ -22,7 +22,7 @@ module.exports = (sequelize:any, DataTypes: any) => {
      */
     id!: string;
     infrastructure_id!: string;
-    user_id!:string;
+    admin_id!:string;
     details!: Record<string, any>;
 
     static associate(models: any) {
@@ -48,6 +48,14 @@ module.exports = (sequelize:any, DataTypes: any) => {
         key: 'id'
       }
     },
+    admin_id : {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id"
+      }
+    },
     detail : {
       type: DataTypes.JSON,
       allowNull: false
@@ -56,7 +64,7 @@ module.exports = (sequelize:any, DataTypes: any) => {
     sequelize,
     modelName: 'infrastructure_request',
     freezeTableName: true, 
-    timestamps:true
+    updatedAt: false, 
   });
 
   

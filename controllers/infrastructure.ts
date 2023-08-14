@@ -65,9 +65,25 @@ export const getInfrastructureByID = async (req: Request, res: Response) => {
 //create new infrastructure.
 export const createInfrastructures = async (req: Request, res: Response) => {
     try {
+
+        const { id, user_id, status  } = req.body
+        // const userId = req.userId
+        const infrastructure_request = {
+            //disini dibuat sesuai dengan attribute si infrastructure requestnya. 
+            id: uuidv4(),
+            infrastructure_id: id,
+            user_id : user_id,
+            //admin_id
+            status: status
+        }
+
         await db.Infrastructure.create(req.body);
+        await db.infrastructure_request.create(infrastructure_request);
         res.status(201).json({ 
-            msg: "Infrastructure Created" 
+            success: true,
+            message: "Infrastructure has created and infrastructure",
+            data:req.body
+      
         });
       } catch (err) {
         console.log(err);
