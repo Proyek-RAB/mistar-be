@@ -134,7 +134,21 @@ export const updateInfrastructure = async (req: Request, res: Response) => {
 
 export const DeleteInfrastructureByID =async (req:Request, res: Response) => {
     try {
-        // await db.Infrastructure.()
+        const deletedInfra = await db.Infrastructure.findAll({
+            where: {
+                id: req.params.id
+            }
+        })
+        await db.Infrastructure.destroy({
+            where: {
+                id : req.params.id
+            }
+        })
+        res.json({
+            status : "success",
+            message: `Infrastructure with ID: ${req.params.id} is deleted`,
+            data : deletedInfra
+        })
     } catch (error) {
         
     }
