@@ -28,6 +28,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       // });
     }
   }
+  
   InfrastructureType.init({
     id: {
       type: DataTypes.INTEGER,

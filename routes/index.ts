@@ -4,6 +4,7 @@ import InfrastructureTypeRouter from "./infrastructuretype";
 import InfrastructureSubTypeRouter from "./infrastructuresubtype";
 import UserRouter from "./user";
 import infrastructure_edit_history from "./infrastructurehistoryedit";
+import InfrastructureRequest from "./infrastructurerequest";
 
 const router = Router();
 
@@ -11,7 +12,8 @@ router.use('/infrastructure', [
     InfrastructureRouter,
     InfrastructureTypeRouter,
     InfrastructureSubTypeRouter,
-    infrastructure_edit_history
+    infrastructure_edit_history,
+    InfrastructureRequest
 ]);
 
 router.use('/user', [

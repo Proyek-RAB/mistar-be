@@ -10,7 +10,11 @@ export const getAllInfrastructureType = async (req: Request, res: Response) => {
                 ['id','ASC']
             ]
         })
-        res.send(InfrastructureType)
+        res.send({
+            status: "success",
+            message: "Infrastructure Type",
+            data : InfrastructureType
+        })
     } catch (error) {
         console.log(error)
     }

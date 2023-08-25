@@ -37,10 +37,14 @@ export const getAllInfrastructure = async (req: Request, res: Response) => {
         const {total_items, total_page, current_page, items } = getPagingData(infrastructure, page, size)
         
         res.send({
-            total_items,
-            total_page,
-            current_page,
-            items,
+            success: true,
+            message: "Infrastructure Data",
+            data: {
+                total_items,
+                total_page,
+                current_page,
+                items,
+            }
         })
 
     } catch (error) {
@@ -48,11 +52,11 @@ export const getAllInfrastructure = async (req: Request, res: Response) => {
     }
 }
 
-export const getInfrastructureByID = async (req: Request, res: Response) => {
+export const getInfrastructureBySubTypeID = async (req: Request, res: Response) => {
     try {
         const infrastructure = await db.Infrastructure.findAll({
             where : {
-                type_id: req.params.id
+                sub_type_id: req.params.id
             }
         })
         // console.log(infrastructure[0])
@@ -81,9 +85,8 @@ export const createInfrastructures = async (req: Request, res: Response) => {
         await db.infrastructure_request.create(infrastructure_request);
         res.status(201).json({ 
             success: true,
-            message: "Infrastructure has created and infrastructure",
-            data:req.body
-      
+            message: "Infrastructure has been created",
+            data: req.body
         });
       } catch (err) {
         console.log(err);
@@ -113,7 +116,6 @@ export const updateInfrastructure = async (req: Request, res: Response) => {
         await db.Infrastructure.update(req.body, {
             where : {
                 id: req.params.id,
-
             },
             individualHooks: true,
             userId: decodedToken['id']
@@ -121,18 +123,19 @@ export const updateInfrastructure = async (req: Request, res: Response) => {
 
         res.send({
             satus: true, 
-            message:  `Infrastructure ${req.params.id} updated`,
-            data : {
-
-            }
+            message:  `This Infrastructure with id ${req.params.id} updated`,
+            data : req.body
         })
-        // res.send({
-        //     status: true, 
-        //     message: `Infrastructure ${req.params.id} updated`,
-        //     data: {}
-        // })
 
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const DeleteInfrastructureByID =async (req:Request, res: Response) => {
+    try {
+        // await db.Infrastructure.()
+    } catch (error) {
+        
     }
 }

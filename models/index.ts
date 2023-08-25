@@ -37,6 +37,13 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Synchronize the database schema with the models
+// sequelize.sync({ alter: true }).then(() => {
+//   console.log('Database schema synchronized');
+// }).catch((error : any) => {
+//   console.error('Error synchronizing database:', error);
+// });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

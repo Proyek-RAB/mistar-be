@@ -10,7 +10,10 @@ export const getAllInfrastructureSubType = async (req: Request, res: Response) =
                 ['id','ASC']
             ]
         })
-        res.send(InfrastructureSubType)
+        res.send({
+            status: "success",
+            message: "Infrastructure Sub Type",
+            data : {InfrastructureSubType}})
     } catch (error) {
         console.log(error)
     }

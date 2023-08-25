@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 export const infrastructures = [
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:2,
         name: "air di ciwaruga",
         details: {
@@ -23,7 +23,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:1,
         name: "air di ciwaruga",
         details: {
@@ -40,7 +40,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:1,
         name: "air di ciwaruga",
         details: {
@@ -59,7 +59,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {
@@ -78,7 +78,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {
@@ -98,7 +98,7 @@ export const infrastructures = [
     },
     {
         id: uuidv4(),
-        user_id: "64e34036-d035-4963-b2b0-e01be8014acd", 
+        user_id: "b9d43b64-1be0-4f9d-a27c-135eda415a34", 
         sub_type_id:3,
         name: "titik pembuangan sampah rw 2",
         details: {

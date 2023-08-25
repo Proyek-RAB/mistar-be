@@ -34,14 +34,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
       primaryKey: true,
       autoIncrement:true,
     },
-    type_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
-        model: "InfrastructureType",
-        key: 'id'
-      }
-    },
     name: {
       type: DataTypes.STRING, 
       allowNull: false,
@@ -57,4 +49,4 @@ module.exports = (sequelize: any, DataTypes: any) => {
     timestamps: false,
   });
   return InfrastructureSubType;
-};
+}; 

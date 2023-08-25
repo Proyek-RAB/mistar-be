@@ -6,7 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 
 type InfrastructureReqHistoryAttr = {
   id: string,
-  infrastructure_id: string,
+  infrastructure_request_id: string,
   admin_id:string,
   details:Record<string, any>,
   // other attributes...
@@ -21,16 +21,15 @@ module.exports = (sequelize:any, DataTypes: any) => {
      * The `models/index` file will call this method automatically.
      */
     id!: string;
-    infrastructure_id!: string;
+    infrastructure_request_id!: string;
     admin_id!:string;
     details!: Record<string, any>;
 
     static associate(models: any) {
       // define association here
-      infrastructure_request_history.hasOne(models.infrastructure_request, {
-        foreignKey: "infrastructure_request_id"
-      });
-      models.infrastructure_request.belongsTo(infrastructure_request_history);    
+      // models.infrastructure_request.belongsTo(infrastructure_request_history, {
+      //   foreignKey: ''
+      // });    
     }
   }
   infrastructure_request_history.init({
@@ -62,7 +61,7 @@ module.exports = (sequelize:any, DataTypes: any) => {
     }
   }, {
     sequelize,
-    modelName: 'infrastructure_request',
+    modelName: 'infrastructure_request_history',
     freezeTableName: true, 
     updatedAt: false, 
   });

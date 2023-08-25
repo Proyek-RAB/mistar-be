@@ -35,10 +35,14 @@ export const getAllInfrastructureRequest = async (req: Request, res: Response) =
         const {total_items, total_page, current_page, items } = getPagingData(infrastructureRequest, page, size)
         
         res.send({
-            total_items,
-            total_page,
-            current_page,
-            items,
+            success: true,
+            message: "Infrastructure Request Data",
+            data: {
+                total_items,
+                total_page,
+                current_page,
+                items,
+            }
         })
 
     } catch (error) {
@@ -50,7 +54,7 @@ export const getInfrastructureRequestByID = async (req: Request, res: Response) 
     try {
         const infrastructureRequest = await db.infrastructure_request.findAll({
             where : {
-                type_id: req.params.id
+                id: req.params.id
             }
         })
         // console.log(infrastructureRequest[0])

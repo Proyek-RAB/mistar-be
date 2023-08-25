@@ -35,12 +35,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate(models: any) {
       // define association here
-      models.InfrastructureSubType.hasMany(Infrastructure, {
-        foreignKey: "sub_type_id"
-      });
-      Infrastructure.belongsTo(models.InfrastructureSubType, {
-        foreignKey: "sub_type_id"
-      });
+      // models.InfrastructureSubType.hasMany(Infrastructure, {
+      //   foreignKey: "sub_type_id"
+      // });
+      // Infrastructure.belongsTo(models.InfrastructureSubType, {
+      //   foreignKey: "sub_type_id"
+      // });
+
     }
 
     static beforeUpdateHook(instance: Infrastructure, options: any) {
@@ -94,11 +95,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
     
   });
 
-  Infrastructure.addHook('beforeUpdate', (infrastructure: Infrastructure, options: any) =>{
+  Infrastructure.addHook('beforeUpdate', async (infrastructure: Infrastructure, options: any) =>{
     try {
       console.log("beforeupdate")
-      const previousData = infrastructure.toJSON(); // saving infrastructure data to options
+      const previousData = await Infrastructure.findByPk(infrastructure.id, { raw: true });
+      // saving infrastructure data to options
       options.previousData = previousData;
+      console.log(previousData)
     } catch (error) {
       console.error('Error beforeUpdate hook:', error);
     }
@@ -110,7 +113,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
       const previousData = options.previousData;
       // console.log(previousData)
       // console.log(options)
-
       if (previousData) {
         // // Create a history record for each changed attribute
         // await db.infrastructure_edit_history.create({
@@ -121,7 +123,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         //     previousData
         //   }
         // })
-        console.log(Object.entries(infrastructure.toJSON()))
+        // console.log(Object.entries(infrastructure.toJSON()))
+        console.log(options.userId)
         for (const [key, value] of Object.entries(infrastructure.toJSON())) {
           if (previousData[key] !== value) {
             await db.infrastructure_edit_history.create({

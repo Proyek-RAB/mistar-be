@@ -5,8 +5,8 @@ import { ReqStatus } from '../enums/status.enum';
 
 type InfrastructureReqAttr = {
   id: string,
-  infrastructure_id: string,
-  user_id:string,
+  // infrastructure_id: string,
+  // user_id:string,
   status: ReqStatus,
   // other attributes...
 };
@@ -20,12 +20,13 @@ module.exports = (sequelize:any, DataTypes: any) => {
      * The `models/index` file will call this method automatically.
      */
     id!: string;
-    infrastructure_id!: string;
-    user_id!:string;
+    // infrastructure_id!: string;
+    // user_id!:string;
     status!: ReqStatus;
 
     static associate(models: any) {
       // define association here
+      // one to many relationship, need to define belongsTo and hasMany together
       infrastructure_request.belongsTo(models.User, {
         foreignKey: "user_id"
       });
@@ -33,36 +34,19 @@ module.exports = (sequelize:any, DataTypes: any) => {
         foreignKey: "user_id"
       });
 
-      infrastructure_request.hasOne(models.Infrastructure, {
-        foreignKey: 'infrastructure_id'
+      //for one to one, we just need belongsTo or hasOne, 
+      infrastructure_request.belongsTo(models.Infrastructure, {
+        foreignKey: "infrastructure_id"
       });
-      models.Infrastructure.belongsTo(infrastructure_request)
-
-
     }
   }
+
   infrastructure_request.init({
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull:false,
       defaultValue: uuidv4()
-    },
-    infrastructure_id: {
-      type: DataTypes.UUID,
-      allowNull: true,
-      references:{
-        model: "Infrastructure",
-        key: 'id'
-      }
-    },
-    user_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: "User",
-        key: "id"
-      }
     },
     status: {
       type: DataTypes.ENUM(...Object.values(ReqStatus)),
@@ -74,5 +58,6 @@ module.exports = (sequelize:any, DataTypes: any) => {
     freezeTableName: true, 
     timestamps: false
   });
+
   return infrastructure_request;
 };
